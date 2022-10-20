@@ -1,0 +1,14 @@
+<p>delete-course works!</p>
+
+<h1> Delete Courses </h1>
+
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+  <label> Course Id to be deleted</label>
+  <input type = "number" name = "courseId" placeholder = "Your message" formControlName="courseId" >
+  <br/>
+  <input type = "submit" value = "Send">
+</form> 
+<div *ngIf="flag">
+  The service failed
+</div>

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Course } from '../model/course';
 import { CoursesService } from '../services/courses.service';
 
 @Component({
-  selector: 'app-add-courses',
-  templateUrl: './add-courses.component.html',
-  styleUrls: ['./add-courses.component.css']
+  selector: 'app-delete-course',
+  templateUrl: './delete-course.component.html',
+  styleUrls: ['./delete-course.component.css']
 })
-export class AddCoursesComponent implements OnInit {
+export class DeleteCourseComponent implements OnInit {
 
   result:string|undefined;
   flag:boolean |  undefined;
@@ -17,9 +16,7 @@ export class AddCoursesComponent implements OnInit {
   constructor(private formBuilder:  FormBuilder,
     private coursesservice:CoursesService)  {
     this.contactForm = this.formBuilder.group({
-      courseName: [''],
-      authorName: [''], 
-      durationInHours: [' ']
+      courseId: ['']
     });
  }
 
@@ -31,19 +28,15 @@ export class AddCoursesComponent implements OnInit {
     this.flag = false;
     
     console.log('Your form data : ', this.contactForm.value );
-    let value = this.contactForm.value;
-    let course :Course ={
-      courseName: value.courseName,
-      authorName: value.authorName,
-      durationInHours: value.durationInHours
-     
-    } ;
 
-    this.coursesservice.addCourse(course).subscribe (
+    let value = this.contactForm.value;
+    let courseId =  value.courseId;
+    
+
+    this.coursesservice.delCourse(courseId).subscribe (
       {
         next: (data) => {
           console.log('receive data from service of rooms' + data)
-          
           
         },
 
@@ -51,14 +44,15 @@ export class AddCoursesComponent implements OnInit {
           this.flag = true;
 
           console.log('error');
-          alert('course added error');
+          alert('course delete error ');
         },
 
         complete: () =>{
           console.log('complete');
-          alert('course added successfully');
+          alert('course delete complete ');
         }
       }
     );
 }
 }
+

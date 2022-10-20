@@ -22,5 +22,9 @@ export class CoursesService {
   addCourse(course:Course): Observable<Course> {
     return this.httpClient.post<Course>(baseUrl + 'course', course);
   }
+
+  delCourse(courseId:string): Observable<Course> {
+    return this.httpClient.delete<Course>(baseUrl + 'deleteCourse/'+courseId);
+  }
 }
 

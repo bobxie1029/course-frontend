@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { AddCoursesComponent } from './add-courses/add-courses.component';
+import { DeleteCourseComponent } from './delete-course/delete-course.component';
 
 @NgModule({
   declarations: [
     AppComponent,
    CoursesListComponent,
    AddCoursesComponent,
+   DeleteCourseComponent,
 
   ],
   imports: [
